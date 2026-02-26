@@ -1,4 +1,4 @@
-# Conguitos AI – Private Assistant
+# Ferret AI – Private Assistant
 
 A local AI assistant for software development, powered by DeepSeek Coder:6.7b.
 Designed for PT-BR and EN-US, returning properly formatted code unless explanations are explicitly requested.
@@ -18,10 +18,10 @@ Designed for PT-BR and EN-US, returning properly formatted code unless explanati
 - Ollama CLI [Download](https://ollama.com/download)
 - Internet connection for first-time model download
 
-# Installation - Using the installer (in development)
+# Installation - Using the installer (In development)
 1.Clone the repository:
 ```bash
-git clone https://github.com/PinkMath/AI-Terminal.git
+git clone https://github.com/PinkMath/Ferret-AI.git
 cd AI-Terminal
 ```
 2.Run the installer:
@@ -41,7 +41,7 @@ python installer.py
 python aiindex.py
 ```
 
-# Installation - Manual
+# Installation - Manual (Recommended)
 Step 1 - Install python
 - Linux:
 ```bash
@@ -66,7 +66,11 @@ ollama pull deepseek-coder:6.7b
 ```
 Step 5 – Run AI
 ```bash
-python aiindex.py
+python app.py
+```
+or if you want to run it in the terminal:
+```bash
+python terminalAI/AiTerminal.py
 ```
 
 # Usage

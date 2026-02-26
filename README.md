@@ -1,4 +1,10 @@
-# Ferret AI – Private Assistant
+<div align="center">
+  <img src="./static/img/icon.jpg" height="300px" width="300px">
+  
+  # Ferret AI
+</div>
+
+# Private Assistant
 
 A local AI assistant for software development, powered by DeepSeek Coder:6.7b.
 Designed for PT-BR and EN-US, returning properly formatted code unless explanations are explicitly requested.
@@ -22,7 +28,7 @@ Designed for PT-BR and EN-US, returning properly formatted code unless explanati
 1.Clone the repository:
 ```bash
 git clone https://github.com/PinkMath/Ferret-AI.git
-cd AI-Terminal
+cd Ferret-AI
 ```
 2.Run the installer:
 ```bash
@@ -38,7 +44,11 @@ python installer.py
 
 3.Once complete, run the AI:
 ```bash
-python aiindex.py
+python app.py
+```
+or if you want to run it in the terminal:
+```bash
+python terminalAI/AiTerminal.py
 ```
 
 # Installation - Manual (Recommended)
@@ -84,3 +94,7 @@ exit, quit, close
 - requests missing error: run pip install requests
 - Ollama CLI not found: ensure CLI is installed and in PATH
 - Model missing: run ollama pull deepseek-coder:6.7b
+
+
+# Art
+Made by Flo: [YouTube](https://www.youtube.com/@djcoolflo)

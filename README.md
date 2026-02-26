@@ -53,23 +53,30 @@ python terminalAI/AiTerminal.py
 
 # Installation - Manual (Recommended)
 Step 1 - Install python
-- Linux:
+- Linux - apt:
 ```bash
 sudo apt update
 sudo apt install python3 python3-pip
 ```
+- Linux - pacman:
+```bash
+sudo pacman -Sy
+sudo pacman -S python3 python python-pip
+```
 - Windows [Download Python](https://www.python.org/downloads/)
+
 Step 2 - Install `requests` and `flask` library
 ```bash
 pip install requests flask
 ```
-Step 3 - nstall Ollama CLI
+Step 3 - Install Ollama CLI
 - Linux:
 ```bash
 curl -fsSL https://ollama.com/install.sh | sh
 ```
 - Windows:
 Download and run the [official installer](https://ollama.com/download/windows). Ensure ollama.exe is in your PATH.
+
 Step 4 – Pull the DeepSeek model
 ```bash
 ollama pull deepseek-coder:6.7b
@@ -91,9 +98,10 @@ exit, quit, close
 ```
 
 # Troubleshooting
-- requests missing error: run pip install requests
+- requests missing error run: pip install requests
 - Ollama CLI not found: ensure CLI is installed and in PATH
 - Model missing: run ollama pull deepseek-coder:6.7b
+- app.py not running: enruse you sourced venv
 
 
 # Art

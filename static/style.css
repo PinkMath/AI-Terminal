@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Segoe UI;
+}
+
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+#messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.message {
+  max-width: 60%;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+}
+
+.user {
+  border-radius: 12px 12px 0 12px;
+  align-self: flex-end;
+  background-color: #ffd828;
+  color: black;
+}
+
+.ai {
+  border-radius: 12px 12px 12px 0;
+  align-self: flex-start;
+  background-color: #202c33;
+  color: white;
+}
+
+.input-area {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 10px;
+  gap: 20px;
+}
+
+input {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 10px;
+}
+
+.send-button,
+.theme-button {
+  border: none;
+}
+
+.send-button {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #21C063;
+  transition: 0.5s ease;
+}
+
+.send-button:hover {
+  transform: scale(1.1);
+  background-color: #D9FDD3;
+}
+
+.theme-button {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

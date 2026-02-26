@@ -59,9 +59,9 @@ sudo apt update
 sudo apt install python3 python3-pip
 ```
 - Windows [Download Python](https://www.python.org/downloads/)
-Step 2 - Install `requests` library
+Step 2 - Install `requests` and `flask` library
 ```bash
-pip install requests
+pip install requests flask
 ```
 Step 3 - nstall Ollama CLI
 - Linux:

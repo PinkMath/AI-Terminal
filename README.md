@@ -24,7 +24,7 @@ Designed for PT-BR and EN-US, returning properly formatted code unless explanati
 - Ollama CLI [Download](https://ollama.com/download)
 - Internet connection for first-time model download
 
-# Installation - Using the installer (In development)
+# Installation -  installer (In development)
 1.Clone the repository:
 ```bash
 git clone https://github.com/PinkMath/Ferret-AI.git

@@ -4,12 +4,21 @@
   # Ferret AI
 </div>
 
-# Private Assistant
+# - Videos
+- App:
+
+https://github.com/user-attachments/assets/22b64c26-32db-4246-8492-deb71944b284
+
+- Terminal:
+
+https://github.com/user-attachments/assets/0773cef9-ecd8-437c-b0bd-94fb2c3e9528
+
+# - Private Assistant
 
 A local AI assistant for software development, powered by DeepSeek Coder:6.7b.
 Designed for PT-BR and EN-US, returning properly formatted code unless explanations are explicitly requested.
 
-# Features
+# - Features
 
 - Local, privacy-first AI – runs entirely on your machine
 - Uses Ollama CLI to manage models
@@ -18,13 +27,13 @@ Designed for PT-BR and EN-US, returning properly formatted code unless explanati
 - Multi-language support: Portuguese & English
 - Ideal for coding, snippets, and developer assistance
 
-# Requirements
+# - Requirements
 
 - Python 3.8+
 - Ollama CLI [Download](https://ollama.com/download)
 - Internet connection for first-time model download
 
-# Installation -  installer (In development)
+# - Installation -  installer (In development)
 1.Clone the repository:
 ```bash
 git clone https://github.com/PinkMath/Ferret-AI.git
@@ -34,7 +43,7 @@ cd Ferret-AI
 ```bash
 python installer.py
 ```
-# What it does:
+# - What it does:
 - Checks Python version
 - Installs `requests` library if missing
 - Checks if Ollama CLI is installed
@@ -51,7 +60,7 @@ or if you want to run it in the terminal:
 python terminalAI/AiTerminal.py
 ```
 
-# Installation - Manual (Recommended)
+# - Installation - Manual (Recommended)
 Step 1 - Install python
 - Linux - apt:
 ```bash
@@ -90,19 +99,19 @@ or if you want to run it in the terminal:
 python terminalAI/AiTerminal.py
 ```
 
-# Usage
+# - Usage
 Type your query or code request in the terminal
 Commands to exit:
 ```code
 exit, quit, close
 ```
 
-# Troubleshooting
+# - Troubleshooting
 - requests missing error run: pip install requests
 - Ollama CLI not found: ensure CLI is installed and in PATH
 - Model missing: run ollama pull deepseek-coder:6.7b
 - app.py not running: enruse you sourced venv
 
 
-# Art
+# - Art
 Made by Flo: [YouTube](https://www.youtube.com/@djcoolflo)

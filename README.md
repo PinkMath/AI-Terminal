@@ -28,10 +28,13 @@ By default, it returns properly formatted code unless explanations are explicitl
 ## 🎥 Demo
 
 ### App Interface
-https://github.com/user-attachments/assets/8008f0c7-984d-419b-9b04-2ea5181f2fe9
+https://github.com/user-attachments/assets/4a6adbf3-f51a-4e7b-8fc6-c33367d5cdcc
 
 ### Terminal Interface
-https://github.com/user-attachments/assets/936e1137-47c8-4c5d-8d69-8837c8ed9dd9
+https://github.com/user-attachments/assets/55b5674d-b323-4099-a445-653bd5214bca
+
+### Log Save
+https://github.com/user-attachments/assets/681d6de7-59aa-464c-b2cd-8db9d6ecbaef
 
 ---
 
@@ -45,7 +48,7 @@ https://github.com/user-attachments/assets/936e1137-47c8-4c5d-8d69-8837c8ed9dd9
 - 🌎 Multi-language support (PT-BR & EN-US)
 - 💻 Built for coding, snippets & dev assistance
 - 🧠 Uses Ollama CLI for model management
-- Conversation_log auto-save
+- 📃Conversation_log auto-save
 
 
 ---

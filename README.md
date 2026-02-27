@@ -196,6 +196,9 @@ pip install requests
 - Ensure it is installed
 - Ensure it is added to PATH
 
+**AI not running (Windows)**
+- Ensure the Ollama's running in the background
+
 **Model missing**
 ```bash
 ollama pull deepseek-coder:6.7b

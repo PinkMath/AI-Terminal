@@ -1,117 +1,229 @@
 <div align="center">
   <img src="./static/img/icon.jpg" height="300px" width="300px">
-  
-  # Ferret AI
+
+  # 🦦 Ferret AI
+  ### Local • Privacy-First • Developer-Focused AI Assistant
 </div>
 
-# - Videos
-- App:
+---
 
+## 🚀 What is Ferret AI?
+
+**Ferret AI** is a fully local, privacy-first coding assistant powered by `deepseek-coder:6.7b` via Ollama.
+
+No cloud.  
+No API keys.  
+No telemetry.  
+
+Just fast, offline AI designed for developers.
+
+Optimized for:
+- 🇧🇷 Portuguese (PT-BR)
+- 🇺🇸 English (EN-US)
+
+By default, it returns properly formatted code unless explanations are explicitly requested.
+
+---
+
+## 🎥 Demo
+
+### App Interface
 https://github.com/user-attachments/assets/22b64c26-32db-4246-8492-deb71944b284
 
-- Terminal:
+### Terminal Interface
+https://github.com/user-attachments/assets/936e1137-47c8-4c5d-8d69-8837c8ed9dd9
 
-https://github.com/user-attachments/assets/0773cef9-ecd8-437c-b0bd-94fb2c3e9528
+---
 
-# - Private Assistant
+## ✨ Features
 
-A local AI assistant for software development, powered by DeepSeek Coder:6.7b.
-Designed for PT-BR and EN-US, returning properly formatted code unless explanations are explicitly requested.
+- 🖥 100% Local AI (runs entirely on your machine)
+- 🔐 Privacy-first – no external APIs
+- 🤖 Powered by DeepSeek-Coder 6.7B
+- 📦 Automatic model detection & download
+- 🎨 Color-coded terminal interface
+- 🌎 Multi-language support (PT-BR & EN-US)
+- 💻 Built for coding, snippets & dev assistance
+- 🧠 Uses Ollama CLI for model management
 
-# - Features
+---
 
-- Local, privacy-first AI – runs entirely on your machine
-- Uses Ollama CLI to manage models
-- Color-coded terminal interface
-- Automatic detection and downloading of required model
-- Multi-language support: Portuguese & English
-- Ideal for coding, snippets, and developer assistance
+## ⚡ Quick Start (Recommended)
 
-# - Requirements
-
-- Python 3.8+
-- Ollama CLI [Download](https://ollama.com/download)
-- Internet connection for first-time model download
-
-# - Installation -  installer (In development)
-1.Clone the repository:
 ```bash
 git clone https://github.com/PinkMath/Ferret-AI.git
 cd Ferret-AI
+python app.py
 ```
-2.Run the installer:
+
+> ⚠ Requires Ollama installed (see below)
+
+---
+
+# 🛠 Installation
+
+## Option 1 — Installer (In Development)
+
 ```bash
+git clone https://github.com/PinkMath/Ferret-AI.git
+cd Ferret-AI
 python installer.py
 ```
-# - What it does:
-- Checks Python version
-- Installs `requests` library if missing
-- Checks if Ollama CLI is installed
-- Linux: installs automatically
-- Windows: prompts for manual installation
-- Checks if `deepseek-coder:6.7b` is downloaded; pulls if missing
 
-3.Once complete, run the AI:
+### The installer will:
+- ✔ Check Python version
+- ✔ Install `requests` if missing
+- ✔ Check if Ollama CLI is installed
+- ✔ Auto-install Ollama (Linux)
+- ✔ Prompt manual install (Windows)
+- ✔ Pull `deepseek-coder:6.7b` if missing
+
+Run the app after installation:
+
 ```bash
 python app.py
 ```
-or if you want to run it in the terminal:
+
+Terminal mode:
+
 ```bash
 python terminalAI/AiTerminal.py
 ```
 
-# - Installation - Manual (Recommended)
-Step 1 - Install python
-- Linux - apt:
+---
+
+## Option 2 — Manual Installation
+
+### Step 1 — Install Python (3.8+)
+
+**Linux (apt):**
 ```bash
 sudo apt update
 sudo apt install python3 python3-pip
 ```
-- Linux - pacman:
+
+**Linux (pacman):**
 ```bash
 sudo pacman -Sy
-sudo pacman -S python3 python python-pip
+sudo pacman -S python python-pip
 ```
-- Windows [Download Python](https://www.python.org/downloads/)
 
-Step 2 - Install `requests` and `flask` library
+**Windows:**  
+Download from: https://www.python.org/downloads/
+
+---
+
+### Step 2 — Install Dependencies
+
 ```bash
 pip install requests flask
 ```
-Step 3 - Install Ollama CLI
-- Linux:
+
+---
+
+### Step 3 — Install Ollama CLI
+
+**Linux:**
 ```bash
 curl -fsSL https://ollama.com/install.sh | sh
 ```
-- Windows:
-Download and run the [official installer](https://ollama.com/download/windows). Ensure ollama.exe is in your PATH.
 
-Step 4 – Pull the DeepSeek model
+**Windows:**  
+Download the official installer:  
+https://ollama.com/download/windows  
+
+Ensure `ollama.exe` is in your PATH.
+
+---
+
+### Step 4 — Pull the Model
+
 ```bash
 ollama pull deepseek-coder:6.7b
 ```
-Step 5 – Run AI
+
+---
+
+### Step 5 — Run Ferret AI
+
 ```bash
 python app.py
 ```
-or if you want to run it in the terminal:
+
+Or terminal mode:
+
 ```bash
 python terminalAI/AiTerminal.py
 ```
 
-# - Usage
-Type your query or code request in the terminal
-Commands to exit:
-```code
-exit, quit, close
+---
+
+# 💻 Usage
+
+Type your code request or question in the interface.
+
+### Exit commands:
+```
+exit
+quit
+close
 ```
 
-# - Troubleshooting
-- requests missing error run: pip install requests
-- Ollama CLI not found: ensure CLI is installed and in PATH
-- Model missing: run ollama pull deepseek-coder:6.7b
-- app.py not running: enruse you sourced venv
+---
 
+# 🧩 Tech Stack
 
-# - Art
-Made by Flo: [YouTube](https://www.youtube.com/@djcoolflo)
+- Python
+- Ollama
+- DeepSeek-Coder 6.7B
+- Flask
+- Requests
+
+---
+
+# 🐛 Troubleshooting
+
+**Missing `requests` error**
+```bash
+pip install requests
+```
+
+**Ollama CLI not found**
+- Ensure it is installed
+- Ensure it is added to PATH
+
+**Model missing**
+```bash
+ollama pull deepseek-coder:6.7b
+```
+
+**App not running**
+- Ensure Python 3.8+
+- Ensure virtual environment is activated (if using venv)
+
+---
+
+# 🛣 Roadmap
+
+- [ ] GUI improvements
+- [ ] Model selector support
+- [ ] Config file system
+- [ ] Plugin architecture
+- [ ] Performance optimizations
+
+---
+
+# 📜 License
+
+MIT License
+
+---
+
+# 🎨 Credits
+
+Made by Flo  
+YouTube: https://www.youtube.com/@djcoolflo
+
+---
+
+⭐ If you like the project, consider starring the repo!

@@ -88,5 +88,5 @@ if __name__ == "__main__":
     print(f" Logs are being saved to: {LOG_DIR}")
     print("="*50 + "\n")
     
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(port=5000, debug=True)
 # ur own privaty AI, made by GitHub: https://github.com/PinkMath

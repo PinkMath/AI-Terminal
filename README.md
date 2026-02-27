@@ -45,6 +45,8 @@ https://github.com/user-attachments/assets/936e1137-47c8-4c5d-8d69-8837c8ed9dd9
 - 🌎 Multi-language support (PT-BR & EN-US)
 - 💻 Built for coding, snippets & dev assistance
 - 🧠 Uses Ollama CLI for model management
+- Conversation_log auto-save
+
 
 ---
 
@@ -162,11 +164,10 @@ python terminalAI/AiTerminal.py
 
 Type your code request or question in the interface.
 
-### Exit commands:
+### Exit,Clear commands:
 ```
-exit
-quit
-close
+/exit
+/clear
 ```
 
 ---
@@ -219,7 +220,7 @@ MIT License
 
 ---
 
-# 🎨 Credits
+# 🎨 Credits - Art
 
 Made by Flo  
 YouTube: https://www.youtube.com/@djcoolflo

@@ -19,7 +19,7 @@ Just fast, offline AI designed for developers.
 
 Optimized for:
 - 🇧🇷 Portuguese (PT-BR)
-- 🇺🇸 English (EN-US)
+- 🇺🇸 English (EN-US) ~> (mainly language)
 
 By default, it returns properly formatted code unless explanations are explicitly requested.
 
@@ -28,7 +28,7 @@ By default, it returns properly formatted code unless explanations are explicitl
 ## 🎥 Demo
 
 ### App Interface
-https://github.com/user-attachments/assets/22b64c26-32db-4246-8492-deb71944b284
+https://github.com/user-attachments/assets/8008f0c7-984d-419b-9b04-2ea5181f2fe9
 
 ### Terminal Interface
 https://github.com/user-attachments/assets/936e1137-47c8-4c5d-8d69-8837c8ed9dd9

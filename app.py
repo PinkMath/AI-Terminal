@@ -14,7 +14,18 @@ app.secret_key = "ferret_secret_key_99"
 API_URL = "http://localhost:11434/api/chat"
 MODEL = "deepseek-coder:6.7b"
 
-LOG_DIR = Path.home() / "logs_App"
+possible_paths = [
+    Path.home() / "OneDrive" / "Desktop",
+    Path.home() / "Desktop",
+]
+
+for path in possible_paths:
+    if path.exists():
+        LOG_DIR = path / "logs_App"
+        break
+else:
+    LOG_DIR = Path.home() / "logs_App"
+
 LOG_DIR.mkdir(exist_ok=True)
 
 PERSONA = {

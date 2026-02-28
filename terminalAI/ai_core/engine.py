@@ -113,7 +113,7 @@ class FerretAI(FerretAIInit):
         # Environment info
         print(f"{C['cyan']}─────────────────────────── Environment ───────────────────────────{C['reset']}")
         print(f"● {C['context']}Model:{C['reset']} {CONFIG['model']}")
-        print(f"● {C['info']}Commands:{C['reset']} /clear | /exit | /code | /copy <num>")
+        print(f"● {C['info']}Commands:{C['reset']} /clear | /exit | /code | /copy <num> | /help")
         print(f"● {C['info']}File:{C['reset']} /file <path> | --summary | --explain | --refactor")
         print(f"● {C['info']}Project:{C['reset']} /project add <dir> | remove | list | ask <question>")
         print(f"● {C['context']}Logs:{C['reset']} saving to {CONFIG['log_dir']}")

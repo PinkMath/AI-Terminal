@@ -44,7 +44,7 @@ sessions_db = {}  # key: session_id, value: messages list
 
 # --- LOGGING FUNCTION ---
 def write_to_log(session_id: str, user_text: str, ai_text: str):
-    filename = f"chat_{datetime.now().strftime('%Y%m%d')}.txt"
+    filename = f"chat_app_{datetime.now().strftime('%Y%m%d')}.txt"
     file_path = LOG_DIR / filename
     timestamp = datetime.now().strftime("%H:%M:%S")
     with open(file_path, 'a', encoding='utf-8') as f:
@@ -136,3 +136,4 @@ if __name__ == "__main__":
     print("="*50 + "\n")
     app.run(port=5000, debug=True)
 # ur own privaty AI, made by GitHub: https://github.com/PinkMath
+

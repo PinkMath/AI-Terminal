@@ -167,10 +167,12 @@ python terminalAI/AiTerminal.py
 
 Type your code request or question in the interface.
 
-### Exit,Clear commands:
+### Exit,Clear,Code,Copy commands:
 ```
 /exit
 /clear
+/code
+/copy <num>
 ```
 
 ---

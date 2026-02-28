@@ -121,7 +121,7 @@ Download from: https://www.python.org/downloads/
 ### Step 2 — Install Dependencies
 
 ```bash
-pip install requests flask
+pip install requests flask pyperclip
 ```
 
 ---

@@ -58,10 +58,20 @@ https://github.com/user-attachments/assets/681d6de7-59aa-464c-b2cd-8db9d6ecbaef
 ```bash
 git clone https://github.com/PinkMath/Ferret-AI.git
 cd Ferret-AI
+python installer.py
+```
+
+> ⚠ This installer automatically checks dependencies, installs Ollama if needed (Linux), and downloads the deepseek-coder:6.7b model.
+
+- Once installed;
+```bash
 python app.py
 ```
 
-> ⚠ Requires Ollama installed (see below)
+- Or terminal mode:
+```bash
+python terminalAI/main.py
+```
 
 ---
 
@@ -92,7 +102,7 @@ python app.py
 Terminal mode:
 
 ```bash
-python terminalAI/AiTerminal.py
+python terminalAI/main.py
 ```
 
 ---
@@ -158,7 +168,7 @@ python app.py
 Or terminal mode:
 
 ```bash
-python terminalAI/AiTerminal.py
+python terminalAI/main.py
 ```
 
 ---
@@ -167,12 +177,24 @@ python terminalAI/AiTerminal.py
 
 Type your code request or question in the interface.
 
-### Exit,Clear,Code,Copy commands:
+### Exit,Clear,Code,Copy,Help commands:
 ```
 /exit
 /clear
 /code
 /copy <num>
+/help  |  /h
+```
+### File,Project commands:
+```
+/file <path>  |  /f <path>
+/file --summary <path>  |  /f --summary <path>
+/file --explain <path>  |  /f --explain <path>
+/file --refactor <path>  |  /f --refactor <path>
+/project add <dir>  |  /p add <dir>
+/project remove  |  /p remove
+/project list  |  /p list
+/project ask <question>  |  /p ask <question>
 ```
 
 ---

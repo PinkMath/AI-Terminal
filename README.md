@@ -28,10 +28,10 @@ By default, it returns properly formatted code unless explanations are explicitl
 ## 🎥 Demo
 
 ### App Interface
-https://github.com/user-attachments/assets/4a6adbf3-f51a-4e7b-8fc6-c33367d5cdcc
+https://github.com/user-attachments/assets/3003f325-2567-4dff-b7d6-67a3f7c21d15
 
 ### Terminal Interface
-https://github.com/user-attachments/assets/55b5674d-b323-4099-a445-653bd5214bca
+https://github.com/user-attachments/assets/e60a5257-e817-43ec-a748-0f1f58f922b7
 
 ### Log Save
 https://github.com/user-attachments/assets/681d6de7-59aa-464c-b2cd-8db9d6ecbaef
@@ -175,27 +175,17 @@ python terminalAI/main.py
 
 # 💻 Usage
 
-Type your code request or question in the interface.
+These commands only works in the terminal-mode (terminalAI/main.py)!!!
 
-### Exit,Clear,Code,Copy,Help commands:
-```
-/exit
-/clear
-/code
-/copy <num>
-/help  |  /h
-```
-### File,Project commands:
-```
-/file <path>  |  /f <path>
-/file --summary <path>  |  /f --summary <path>
-/file --explain <path>  |  /f --explain <path>
-/file --refactor <path>  |  /f --refactor <path>
-/project add <dir>  |  /p add <dir>
-/project remove  |  /p remove
-/project list  |  /p list
-/project ask <question>  |  /p ask <question>
-```
+Commands | Shortcuts | Combo | Exec
+| --- | --- | --- | --- |
+/exit | none | none | Quit
+/clear | none | none | Clean the chat
+/code | none | none | Allow paste codes
+/copy <num> | none | none | Copy the codes that the AI sent
+/help | /h | none | Show  the commands
+/file {path} | /f {path} | /f --summary {path} <br/> /f --explain {path} <br/> /f --refactor {path} | The AI reads that file
+/project {combo} {dir} | /p {combo} {dir} | /p add {dir} <br/> /p remove <br/> /p list <br/> /p ask {question} | The AI reads a whole folder
 
 ---
 

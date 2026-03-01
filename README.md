@@ -174,8 +174,9 @@ python terminalAI/main.py
 ---
 
 # 💻 Usage
+> ⚠ These commands only works in the terminal-mode (terminalAI/main.py)!!!
 
-These commands only works in the terminal-mode (terminalAI/main.py)!!!
+<div align="center">
 
 Commands | Shortcuts | Combo | Exec
 | --- | --- | --- | --- |
@@ -187,6 +188,7 @@ Commands | Shortcuts | Combo | Exec
 /file {path} | /f {path} | /f --summary {path} <br/> /f --explain {path} <br/> /f --refactor {path} | The AI reads that file
 /project {combo} {dir} | /p {combo} {dir} | /p add {dir} <br/> /p remove <br/> /p list <br/> /p ask {question} | The AI reads a whole folder
 /resetlog | /rl | none | Rebuild the folder and the log file
+</div>
 
 ---
 

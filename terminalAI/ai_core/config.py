@@ -6,6 +6,7 @@ possible_paths = [
     Path.home() / "OneDrive" / "Desktop",
     Path.home() / "Desktop",
 ]
+
 for path in possible_paths:
     if path.exists():
         LOG_DIR = path / "logs_Ferret"

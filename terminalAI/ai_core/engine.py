@@ -10,7 +10,7 @@ from datetime import datetime
 from pathlib import Path
 
 # Internal imports from our package
-from .config import CONFIG, PERSONAS, C
+from .config import CONFIG, PERSONAS, C, possible_paths
 from .utils import _print_banner, _typing_indicator, _get_terminal_width
 from . import FerretAIInit
 
@@ -224,7 +224,8 @@ class FerretAI(FerretAIInit):
         short_commands = {
             "/p": "/project",
             "/f": "/file",
-            "/h": "/help"
+            "/h": "/help",
+            "/rl": "/resetlog"
         }
         while True:
             try:
@@ -250,6 +251,13 @@ class FerretAI(FerretAIInit):
                 # --- HELP ---
                 if cmd == '/help':
                     self._show_help()
+                    continue
+
+                # --- REBUILD THE LOG ---
+                if cmd == '/resetlog':
+                    if not os.path.exists(CONFIG["log_dir"]):
+                        os.makedirs(CONFIG["log_dir"])
+                        print(f"\n{C['brand']}● {self.log_file} {C['ai']}~> rebuilded\n")
                     continue
 
                 # --- CLEAR CONTEXT ---

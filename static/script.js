@@ -1,39 +1,67 @@
-let darkMode = true;
+// ======= STATE =======
 let isLoading = false;
+let currentTheme = localStorage.getItem("theme") || "dark";
 
-// ======= INPUT HANDLING =======
+// ======= DOM ELEMENTS =======
 const textarea = document.getElementById("messageInput");
+const messagesContainer = document.getElementById("messages");
+const themeButton = document.getElementById("theme-button");
+const moon = document.getElementById("moon")
+const sun = document.getElementById("sun")
 
-textarea.addEventListener("keydown", e => {
-  if (e.key === "Enter" && !e.shiftKey) {
-    e.preventDefault();
-    sendMessage();
-  }
-});
+// ======= INITIALIZE =======
+init();
 
-textarea.addEventListener("input", function () {
-  this.style.height = "auto";
-  this.style.height = this.scrollHeight + "px";
-});
+function init() {
+  document.documentElement.setAttribute("data-theme", currentTheme);
+  setupThemeToggle();
+  setupTextarea();
+}
+
+// ======= THEME TOGGLE =======
+function setupThemeToggle() {
+  themeButton.addEventListener("click", () => {
+    currentTheme = currentTheme === "dark" ? "light" : "dark";
+    if (currentTheme === "dark" ) { sun.style.display = "block"; moon.style.display = "none" }
+    else if (currentTheme === "light" ) { sun.style.display = "none"; moon.style.display = "block" }
+    else { sun.style.display = "block"; moon.style.display = "none" }
+    document.documentElement.setAttribute("data-theme", currentTheme);
+    localStorage.setItem("theme", currentTheme);
+  });
+}
+
+// ======= TEXTAREA HANDLING =======
+function setupTextarea() {
+  textarea.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+
+  textarea.addEventListener("input", () => {
+    textarea.style.height = "auto";
+    textarea.style.height = `${textarea.scrollHeight}px`;
+  });
+}
 
 // ======= SEND MESSAGE =======
 async function sendMessage() {
   if (isLoading) return;
-
-  const input = document.getElementById("messageInput");
-  const text = input.value.trim();
+  const text = textarea.value.trim();
   if (!text) return;
 
   addMessage(text, "user");
-  input.value = "";
-  input.style.height = "auto";
-  textarea.disabled = true;
+  textarea.value = "";
+  textarea.style.height = "auto";
   isLoading = true;
+  textarea.disabled = true;
 
-  const messagesDiv = document.getElementById("messages");
-  const aiMsgDiv = document.createElement("div");
-  aiMsgDiv.classList.add("message", "ai");
-  messagesDiv.appendChild(aiMsgDiv);
+  const aiMsgDiv = createMessageDiv("ai");
+  messagesContainer.appendChild(aiMsgDiv);
+
+  const dotsIndicator = createTypingIndicator();
+  aiMsgDiv.appendChild(dotsIndicator);
 
   try {
     const response = await fetch("/chat", {
@@ -42,7 +70,6 @@ async function sendMessage() {
       body: JSON.stringify({ message: text })
     });
 
-    // 2. Attach to the stream
     const reader = response.body.getReader();
     const decoder = new TextDecoder();
     let fullText = "";
@@ -50,33 +77,29 @@ async function sendMessage() {
     while (true) {
       const { done, value } = await reader.read();
       if (done) break;
-
       const chunk = decoder.decode(value);
       const lines = chunk.split("\n");
 
       for (const line of lines) {
-        if (line.startsWith("data: ")) {
-          try {
-            const data = JSON.parse(line.substring(6));
-            if (data.content) {
-              fullText += data.content;
-              
-              aiMsgDiv.textContent = fullText;
-              
-              if (isUserNearBottom(messagesDiv)) {
-                messagesDiv.scrollTop = messagesDiv.scrollHeight;
-              }
-            }
-          } catch (e) { console.error("Error parsing stream:", e); }
-        }
+        if (!line.startsWith("data: ")) continue;
+        try {
+          const data = JSON.parse(line.slice(6));
+          if (data.content) {
+            fullText += data.content;
+            aiMsgDiv.textContent = fullText + " ";
+            scrollIfNearBottom(messagesContainer);
+          }
+        } catch(e){ console.error("Stream parse error:", e);}
       }
     }
 
-    aiMsgDiv.textContent = ""; 
+    removeTypingIndicator(dotsIndicator);
+    aiMsgDiv.textContent = "";
     renderFormattedMessage(aiMsgDiv, fullText);
+    scrollIfNearBottom(messagesContainer);
 
   } catch (err) {
-    console.error("Fetch error:", err);
+    console.error(err);
     aiMsgDiv.textContent = "Error connecting to backend.";
   } finally {
     isLoading = false;
@@ -84,112 +107,99 @@ async function sendMessage() {
     textarea.focus();
   }
 }
-// ======= ADD MESSAGE =======
-function addMessage(text, sender) {
-  const messages = document.getElementById("messages");
+
+// ======= MESSAGES UTILITY =======
+function createMessageDiv(sender) {
   const div = document.createElement("div");
-  div.classList.add("message", sender);
-
-  if (sender === "ai" && text.includes("```")) {
-    renderFormattedMessage(div, text);
-  } else {
-    div.textContent = text;
-  }
-
-  messages.appendChild(div);
-  messages.scrollTo({ top: messages.scrollHeight, behavior: "smooth" });
+  div.className = `message ${sender}`;
+  return div;
 }
 
-// ======= TYPE AI MESSAGE =======
-function typeMessage(text, div) {
-  let index = 0;
-
-  function type() {
-    if (index < text.length) {
-      div.textContent += text.charAt(index);
-      index++;
-
-      if (isUserNearBottom(div.parentElement)) {
-        div.parentElement.scrollTop = div.parentElement.scrollHeight;
-      }
-
-      setTimeout(type, Math.random() * 15 + 10);
-    } else {
-      const finalText = div.textContent;
-      div.textContent = "";
-      renderFormattedMessage(div, finalText);
-
-      if (isUserNearBottom(div.parentElement)) {
-        div.parentElement.scrollTop = div.parentElement.scrollHeight;
-      }
-
-      isLoading = false;
-      textarea.disabled = false;
-      textarea.focus();
-    }
-  }
-
-  type();
+function addMessage(text, sender) {
+  const div = createMessageDiv(sender);
+  div.textContent = text;
+  messagesContainer.appendChild(div);
+  scrollIfNearBottom(messagesContainer);
 }
 
-// ======= FORMAT CODE BLOCKS =======
+function scrollIfNearBottom(container, threshold=32){
+  if(container.scrollHeight - container.scrollTop - container.clientHeight < threshold)
+    container.scrollTop = container.scrollHeight;
+}
+
+// ======= TYPING DOTS =======
+function createTypingIndicator(){
+  const container = document.createElement("span");
+  container.className = "typing-dots";
+  
+  for (let i = 0; i < 3; i++) {
+    const dot = document.createElement("span");
+    container.appendChild(dot);
+  }
+
+  return container;
+}
+
+function removeTypingIndicator(span){ span.remove(); }
+
+// ======= CODE BLOCKS =======
 function renderFormattedMessage(div, text) {
-  const parts = text.split(/```/);
+  // Regex to detect code blocks: ```[lang]? ... ```
+  const codeBlockRegex = /```(\w+)?\n([\s\S]*?)```/g;
+  let lastIndex = 0;
 
-  parts.forEach((part, index) => {
-    if (index % 2 === 0) {
-      const span = document.createElement("span");
-      span.textContent = part;
-      div.appendChild(span);
-    } else {
-      const lines = part.split("\n");
-      if (lines[0].match(/^[a-zA-Z]+$/)) lines.shift(); 
-      const codeContent = lines.join("\n");
-
-      const pre = document.createElement("pre");
-      const code = document.createElement("code");
-      code.textContent = codeContent;
-
-      const copyBtn = document.createElement("button");
-      copyBtn.classList.add("copy-btn");
-      copyBtn.textContent = "Copy";
-      copyBtn.onclick = () => {
-        navigator.clipboard.writeText(codeContent);
-        copyBtn.textContent = "Copied!";
-        setTimeout(() => (copyBtn.textContent = "Copy"), 1500);
-      };
-
-      pre.appendChild(copyBtn);
-      pre.appendChild(code);
-      div.appendChild(pre);
+  let match;
+  while ((match = codeBlockRegex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      const plainText = text.substring(lastIndex, match.index);
+      div.appendChild(document.createTextNode(plainText));
     }
-  });
-}
 
-// ======= SCROLL UTILITY =======
-function isUserNearBottom(container, threshold = 32) {
-  return container.scrollHeight - container.scrollTop - container.clientHeight < threshold;
-}
+    const language = match[1] || ""; // optional language
+    const codeContent = match[2];
 
-// ======= THEME TOGGLE =======
-function toggleTheme() {
-  const moon = document.getElementById("moon");
-  const sun = document.getElementById("sun");
-  const button = document.getElementById("theme-button");
-  darkMode = !darkMode;
+    const pre = document.createElement("pre");
+    const code = document.createElement("code");
+    if (language) code.classList.add(language);
+    code.textContent = codeContent;
 
-  if (darkMode) {
-    moon.style.display = "none";
-    sun.style.display = "block";
-    button.style.backgroundColor = "#ff8c00";
-    document.body.style.backgroundColor = "#111b21";
-  } else {
-    sun.style.display = "none";
-    moon.style.display = "block";
-    moon.style.color = "white";
-    button.style.backgroundColor = "#140d00";
-    document.body.style.backgroundColor = "#f0f0f0";
+    const copyBtn = document.createElement("button");
+    copyBtn.className = "copy-btn";
+    copyBtn.textContent = "Copy";
+    copyBtn.onclick = () => {
+      navigator.clipboard.writeText(codeContent);
+      copyBtn.textContent = "Copied!";
+      setTimeout(() => (copyBtn.textContent = "Copy"), 1500);
+    };
+
+    pre.append(copyBtn, code);
+    div.appendChild(pre);
+
+    lastIndex = codeBlockRegex.lastIndex;
+  }
+
+  if (lastIndex < text.length) {
+    div.appendChild(document.createTextNode(text.substring(lastIndex)));
   }
 }
 
-toggleTheme();
+function createCodeBlock(codeText){
+  const lines = codeText.split("\n");
+  if(lines[0].match(/^[a-zA-Z]+$/)) lines.shift();
+  const codeContent = lines.join("\n");
+
+  const pre = document.createElement("pre");
+  const code = document.createElement("code");
+  code.textContent = codeContent;
+
+  const copyBtn = document.createElement("button");
+  copyBtn.className="copy-btn";
+  copyBtn.textContent="Copy";
+  copyBtn.onclick = ()=>{
+    navigator.clipboard.writeText(codeContent);
+    copyBtn.textContent="Copied!";
+    setTimeout(()=>copyBtn.textContent="Copy",1500);
+  };
+  pre.append(copyBtn, code);
+  return pre;
+}

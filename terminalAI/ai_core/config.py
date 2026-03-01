@@ -8,10 +8,10 @@ possible_paths = [
 ]
 for path in possible_paths:
     if path.exists():
-        LOG_DIR = path / "logs_App"
+        LOG_DIR = path / "logs_Ferret"
         break
 else:
-    LOG_DIR = Path.home() / "logs_App"
+    LOG_DIR = Path.home() / "logs_Ferret"
 
 CONFIG = {
     "url": "http://localhost:11434/api/chat",

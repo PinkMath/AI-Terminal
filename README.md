@@ -242,8 +242,7 @@ MIT License
 
 # 🎨 Credits - Art
 
-Made by Flo  
-YouTube: https://www.youtube.com/@djcoolflo
+☁️ Made by Cloud
 
 ---
 
